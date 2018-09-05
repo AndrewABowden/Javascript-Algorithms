@@ -20,33 +20,24 @@ for (var index = 0; index < arraySize; index++) {
 }
 
 // ================================================
-// SOLUTION - Selection Sort
+// SOLUTION - Insertion Sort
 // ================================================
-//Swap changes two values places in the array
-function swap(items, firstIndex, secondIndex) {
-  var temp = items[firstIndex];
-  items[firstIndex] = items[secondIndex];
-  items[secondIndex] = temp;
-}
+function insertionSort(items) {
+    var index;
+    var b;
 
-function selectionSort(items) {
-    //setting len to items.length, storing it in global variable is more performant than doing it only in forloop
-    var len = items.length;
-    var min;
-    //set index of minium to this position
-    min = i;
+    for(index = 0; index < items.length; index++) {
+        var value = items[index];
 
-    //check rest of array to see if anything is smaller
-    for (var j = i + 1; j < len; j++) {
-        min = j;
+        for(b = index - 1; b > -1 && items[b] > value; b--) {
+            items[b + 1] = items[b];
+        }
+
+        items[b + 1] = value;
     }
+return items;
 }
 
-//if current pos isnt the min, swap it and the minimum
-if (i !== min) {
-    swap(items, i, min)
-}
-return items;
 
 
 // ================================================
@@ -56,4 +47,4 @@ console.log("PRE-SORT");
 console.log(array.join(" "));
 console.log("---------------------------");
 console.log("POST-SORT");
-console.log(selectionSort(array).join(" "));
+console.log(insertionSort(array).join(" "));
